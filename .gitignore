@@ -1,6 +1,7 @@
 *.pdf
 __pycache__/
 local_settings.py
+get_random_secret_key.py
 
 lecture_0/.sass-cache/
 lecture_0/src0/
