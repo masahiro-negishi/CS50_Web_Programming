@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Google Image</title>
+        <link rel="stylesheet" href="search.css">
+    </head>
+    <body>
+        <!--link to the top page-->
+        <div class="link">
+            <a href="google_search.html">Search</a>
+        </div>
+
+        <!--Google-->
+        <div class="google">
+            <img src="googlelogo.png" alt="Google">
+            <span id="images">images</span>
+        </div>
+
+        <!--type what to search-->
+        <div class="search">
+            <form action="https://www.google.com/search" target="_self" method="get" autocomplete="on">
+                <input class="textbox" type="text" name="q">
+                <br>
+                <br>
+                <input class="search_button" type="submit" value="Google Search">
+                <input type="hidden" name="tbm" value="isch">
+            </form>
+        </div>
+    </body>
+</html>
