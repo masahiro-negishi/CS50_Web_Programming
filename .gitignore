@@ -1,5 +1,6 @@
 *.pdf
-*/__pycache__/
+__pycache__/
+local_settings.py
 
 lecture_0/.sass-cache/
 lecture_0/src0/
