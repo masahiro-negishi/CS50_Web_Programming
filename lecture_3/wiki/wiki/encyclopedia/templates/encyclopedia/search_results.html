@@ -1,0 +1,18 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Search result
+{% endblock %}
+
+{% block body %}
+    <h1>All Pages that includes "{{ entry }}" as a substring.</h1>
+
+    <ul>
+        {% for including in includings %}
+            <li>
+                <a href="{% url 'encyclopedia:entry' including %}">{{ including }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
