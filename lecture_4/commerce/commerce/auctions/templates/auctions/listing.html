@@ -1,0 +1,113 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    {% if listing.active %}
+        <!--active page-->
+        <h2>Details of {{ listing.title }}</h2>
+
+        {% if message %}
+            <h3>{{ message }}</h3>
+        {% endif %}
+
+        <ul>
+            <li>Title: {{ listing.title }}</li>
+            <li>Category: <a href="{% url 'one_category' listing.category %}">{{ listing.category }}</a></li>
+            <li>Description: {{ listing.description }}</li>
+            <li>Current Price: ${{ listing.current_price }}</li>
+            {% if listing.image_url %}
+                <li>Image: <img src="{{ listing.image_url }}" alt="{{ listing.title }}" width="10%" height="10%"></li>
+                <li>URL to Image: <a href="{{ listing.image_url }}">here</a></li>
+            {% else %}
+                <li>Image: No Image</li>
+            {% endif %}
+            <!--Comments-->
+            <li>
+                Comments:
+                <ul>
+                    {% for comment in comments %}
+                        <li>{{ comment.text }}</li>
+                    {% endfor %}
+                </ul>
+            </li>
+            <!--Bids history-->
+            <li>
+                Bids:
+                ${{ listing.start_price }} (start)
+                {% for bid in bids %}
+                    -> ${{ bid.price }}
+                {% endfor %}
+                (current)
+            </li>
+            <!--Add to watchlist-->
+            {% if user.is_authenticated and not in_watchlist %}
+                <li>
+                    <form action="{% url 'listing' listing.title %}" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="action" value="Add_to_watchlist">
+                        <input type="submit" value="Add to my watchlist">
+                    </form>
+                </li>
+            {% endif %}
+            <!--Remove from watchlist-->
+            {% if user.is_authenticated and in_watchlist %}
+                <li>
+                    <form action="{% url 'listing' listing.title %}" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="action" value="Remove_from_watchlist">
+                        <input type="submit" value="Remove from my watchlist">
+                    </form>
+                </li>
+            {% endif %}
+            <!--Add Bid-->
+            {% if user.is_authenticated %}
+                <li>
+                    {% if bid_history %}
+                        You should bid more than ${{ listing.current_price }} 
+                    {% else %}
+                        You should bid at least as large as ${{ listing.current_price }}
+                    {% endif %}
+                    <form action="{% url 'listing' listing.title %}" method="post">
+                        <br>
+                        {% csrf_token %}
+                        <input type="hidden" name="action" value="Bid">
+                        <input type="number" step="0.01" min="0.01" placeholder="{{ listing.current_price }}" name="bid">
+                        <input type="submit" value="Bid">
+                    </form>
+                </li>
+            {% endif %}
+            <!--close the listing-->
+            {% if user.is_authenticated and listing.seller == user %}
+                <li>
+                    <form action="{% url 'listing' listing.title %}" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="action" value="Close">
+                        <input type="submit" value="Close this page">
+                    </form>
+                </li>
+            {% endif %}
+            <!--Add comments-->
+            {% if user.is_authenticated %}
+                <li>
+                    Add Comments:
+                    <form action="{% url 'listing' listing.title %}" method="post">
+                        {% csrf_token %}
+                        {% for field in form %}
+                            {{ field }}
+                            <br>
+                        {% endfor %}
+                        <input type="hidden" name="action" value="Comment">
+                        <input type="submit">
+                    </form>
+                </li>
+            {% endif %}
+        </ul>
+    {% else %}
+        <!--inactive page-->
+        <h2>Auction for this listing already finished.</h2>
+        {% if listing.winner and user == listing.winner %}
+            You won the listing with ${{ listing.current_price }}
+        {% endif %}
+    {% endif %}
+{% endblock %}
+
+category seller currentprice
