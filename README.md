@@ -11,3 +11,5 @@ lecture_3: Django
 lecture_4: SQL, Models, and Migrations
 
 lecture_5: JavaScript
+
+lecture_6: User Interfaces
