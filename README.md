@@ -13,3 +13,5 @@ lecture_4: SQL, Models, and Migrations
 lecture_5: JavaScript
 
 lecture_6: User Interfaces
+
+lecture_7: Testing, CI/CD
