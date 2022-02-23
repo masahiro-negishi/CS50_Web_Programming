@@ -1,0 +1,30 @@
+{% extends "network/layout.html" %}
+{% load static %}
+
+{% block body %}
+    <h1>All Posts</h1>
+    {% if user.is_authenticated %}
+        <div class="newpost border rounded">
+            <h3>New Post</h3>
+            <form action="{% url 'index' %}" method="post">
+                {% csrf_token %}
+                <textarea id="body" name="body" class="border rounded"></textarea>
+                <br>
+                <input type="submit" class="btn btn-sm btn-primary" value="Post">
+            </form>
+        </div>
+    {% endif %}
+    <div>
+        <button id="previous" class="btn btn-sm btn-primary">Previous</button>
+        <div class="allposts"></div>
+        <button id="next" class="btn btn-sm btn-primary">Next</button>
+    </div>
+
+    <!--tell visitor to index.js-->
+    <input id="visitor_name" type="hidden" value="{{ visitor }}">
+{% endblock %}
+
+
+{% block script %}
+    <script src="{% static 'network/index.js' %}"></script>
+{% endblock %}

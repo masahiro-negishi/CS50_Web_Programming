@@ -1,0 +1,30 @@
+{% extends "network/layout.html" %}
+{% load static %}
+
+{% block body %}
+    <h1>{{ username }}'s page</h1>
+    <div>Number of Followers: {{ followers }}</div>
+    <div>Number of Follows: {{ follows }}</div>
+    <h2>{{ username }}'s posts</h2>
+
+    <div>
+        <button id="previous" class="btn btn-sm btn-primary">Previous</button>
+        <div class="userposts"></div>
+        <button id="next" class="btn btn-sm btn-primary">Next</button>
+    </div>
+
+    <!--Any other user who is signed in can see these buttons-->
+    {% if user.is_authenticated and username != user.username %}
+    <button id="follow_button" class="btn btn-sm btn-primary">Follow</button>
+    <button id="unfollow_button" class="btn btn-sm btn-primary">Unfollow</button>
+    {% endif %}
+
+    <!--tell username and visitor to profile.js-->
+    <input id="username" type="hidden" value="{{ username }}">
+    <input id="visitor_name" type="hidden" value="{{ visitor }}">
+{% endblock %}
+
+
+{% block script %}
+    <script src="{% static 'network/profile.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "network/layout.html" %}
+{% load static %}
+
+{% block body %}
+    <h1>All Posts from Follows</h1>
+    <div>
+        <button id="previous" class="btn btn-sm btn-primary">Previous</button>
+        <div class="follows_posts"></div>
+        <button id="next" class="btn btn-sm btn-primary">Next</button>
+    </div>
+{% endblock %}
+
+
+{% block script %}
+    <script src="{% static 'network/following.js' %}"></script>
+{% endblock %}

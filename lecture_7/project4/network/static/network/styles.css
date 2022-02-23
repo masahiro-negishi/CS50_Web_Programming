@@ -1,0 +1,88 @@
+/* for class "newpost" in index.html */
+.newpost {
+    width: 98%;
+    height: 30%;
+    margin: 0 auto;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    padding: 1%;
+}
+
+.newpost > form, h3 {
+    margin: 1%;
+}
+
+.newpost #body {
+    width: 100%;
+}
+
+/* for id "previous" and "next" */
+#previous, #next {
+    margin-left: 1%;
+}
+
+/* for class "allposts", "follows_posts", "userposts" */
+.allposts > div, .follows_posts > div, .userposts > div {
+    width: 98%;
+    margin: 0 auto;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    padding: 1%;
+}
+
+.allposts .timestamp, .follows_posts .timestamp, .userposts .timestamp {
+    color: grey;
+}
+
+.allposts .poster, .follows_posts .poster, .userposts .poster {
+    font-size: 20px;
+}
+
+.allposts .like, .follows_posts .like, .userposts .like {
+    display: flex;
+}
+
+.allposts .like_num, .follows_posts .like_num, .userposts .like_num {
+    height: 40px;
+    width: 40px;
+    text-align: left;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 12px;
+}
+
+@keyframes heartblast {
+    0% {
+        background-position: left;
+    }
+    100% {
+        background-position: right;
+    }
+}
+
+.allposts .like_icon_off, .follows_posts .like_icon_off, .userposts .like_icon_off {
+    background-image: url("./heart_animation.png");
+    background-position: left;
+    background-size: 2900%;
+    width: 40px;
+    height: 40px;
+
+    animation-name: heartblast;
+    animation-duration: 800ms;
+    animation-iteration-count: 1;
+    animation-timing-function: steps(28);
+    animation-play-state: paused;
+}
+
+.allposts .like_icon_on, .follows_posts .like_icon_on, .userposts .like_icon_on {
+    background-image: url("./heart_animation.png");
+    background-position: right;
+    background-size: 2900%;
+    width: 40px;
+    height: 40px;
+}
+
+/* for id "follow_button" and "unfollow_button" in profile.html */
+#follow_button, #unfollow_button {
+    margin: 1%;
+}
