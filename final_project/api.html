@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>新型コロナウイルス感染者数</title>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                fetch('https://api.covid19api.com/summary')
+                .then(response => {
+                    console.log(response)
+                    return response.json();
+                })
+                .then(data => {
+                    console.log(data.Global);
+                    const Countries = data.Countries;
+                    for (let i = 0; i < 10; i++){
+                        const frame = document.createElement('div');
+                        const country = document.createElement('div');
+                        const newconfirmed = document.createElement('div');
+                        const totalconfirmed = document.createElement('div');
+                        country.innerHTML = `Country: ${Countries[i].Country}`;
+                        newconfirmed.innerHTML = `NewConfirmed: ${Countries[i].NewConfirmed}`;
+                        totalconfirmed.innerHTML = `TotalConfirmed: ${Countries[i].TotalConfirmed}`;
+                        frame.appendChild(country);
+                        frame.appendChild(newconfirmed);
+                        frame.appendChild(totalconfirmed);
+                        document.querySelector('.table').appendChild(frame);
+                    }
+                })
+
+                fetch('https://api.covid19api.com/countries')
+                .then(response => {
+                    //console.log(response)
+                    return response.json();
+                })
+                .then(data => {
+                    console.log(data.length);
+                })
+            })
+        </script>
+    </head>
+    <body>
+        <div class="table"></div>
+    </body>
+</html>

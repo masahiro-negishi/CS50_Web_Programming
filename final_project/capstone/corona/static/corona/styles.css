@@ -1,0 +1,32 @@
+#buttons {
+    text-align: center;
+    padding: 5%;
+}
+
+#buttons > button {
+    width: 20%;
+    padding: 1%;
+}
+
+canvas{
+    margin: 5%;
+}
+
+#chart-all > div, #country-chart-all > div, #my-country-chart-all > div{
+    text-align: right;
+    margin-top: 10%;
+    margin-right: 5%;
+}
+
+#choose-country > select{
+    margin: auto;
+}
+
+#country-flag, #my-country-flag {
+    box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);
+}
+
+table {
+    width: 90%;
+    margin-left: auto;
+}

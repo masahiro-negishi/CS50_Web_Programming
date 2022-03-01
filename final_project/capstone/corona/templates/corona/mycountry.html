@@ -1,0 +1,42 @@
+{% extends "corona/layout.html" %}
+{% load static %}
+
+{% block body %}
+    <!--User's Country Statistics-->
+    <div id="my-country-statistics">
+        <div class="table-responsive">
+            <table class="table table-striped" id="my-country-data">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Field</th>
+                        <th scope="col">Population</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h3 class="display-3" id="my-country-name"></h3>
+            <img id="my-country-flag">
+        </div>
+        <div id="my-country-chart-all">
+            <div>
+                Note: Data of number of recovered people is not available after August 5th 2021
+            </div>
+            <canvas id="my-country-three-chart-all"></canvas>
+            <canvas id="my-country-three-chart-month"></canvas>
+        </div>
+        <div id="my-country-vaccine-chart">
+            <canvas id="my-country-vaccine-chart-all"></canvas>
+            <canvas id="my-country-vaccine-chart-month"></canvas>
+        </div>
+    </div>
+
+    <!--Tell country name to mycountry.js-->
+    <input id="user-country" type="hidden" value="{{ country }}">
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'corona/mycountry.js' %}"></script>
+{% endblock %}

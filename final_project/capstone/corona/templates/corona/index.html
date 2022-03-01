@@ -1,0 +1,76 @@
+{% extends "corona/layout.html" %}
+{% load static %}
+
+{% block body %}
+    <div id="buttons">
+        <button type="button" id="global-button" class="btn btn-secondary">Global</button>
+        <button type="button" id="country-button" class="btn btn-secondary">Country</button>
+    </div>
+    <!--Global Statistics-->
+    <div id="global-statistics">
+        <h3 class="display-3">World-wide Statistics</h3>
+        <div class="table-responsive">
+            <table class="table table-striped" id="global-data">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Field</th>
+                        <th scope="col">Population or Doses</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+        <div id="chart-all">
+            <div>
+                Note: Data of number of recovered people is not available after August 5th 2021
+            </div>
+            <canvas id="three-chart-all"></canvas>
+            <canvas id="three-chart-month"></canvas>
+        </div>
+        <div id="vaccine-chart">
+            <canvas id="vaccine-chart-all"></canvas>
+            <canvas id="vaccine-chart-month"></canvas>
+        </div>
+    </div>
+    <!--Country Statistics-->
+    <div id="country-statistics">
+        <div id="choose-country">
+            <h3 class="display-3">Particular Country Statistics</h3>
+            <select class="custom-select">
+            </select>
+            <button type="button" id="search-button" class="btn btn-primary">Show data</button>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-striped" id="country-data">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Field</th>
+                        <th scope="col">Population</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h3 class="display-3" id="country-name"></h3>
+            <img id="country-flag">
+        </div>
+        <div id="country-chart-all">
+            <div>
+                Note: Data of number of recovered people is not available after August 5th 2021
+            </div>
+            <canvas id="country-three-chart-all"></canvas>
+            <canvas id="country-three-chart-month"></canvas>
+        </div>
+        <div id="country-vaccine-chart">
+            <canvas id="country-vaccine-chart-all"></canvas>
+            <canvas id="country-vaccine-chart-month"></canvas>
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'corona/index.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "corona/layout.html" %}
+{% load static %}
+
+{% block body %}
+    <h1 class="display-4">There are <span id="num-of-candidates"></span> vaccine candidates now</h1>
+    <div class="table-responsive">
+        <table class="table table-striped" id="vaccine-table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Instituations</th>
+                    <th scope="col">Mechanism</th>
+                    <th scope="col">Sponsors</th>
+                    <th scope="col">Trial Phase</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'corona/vaccine.js' %}"></script>
+{% endblock %}
